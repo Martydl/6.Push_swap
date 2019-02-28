@@ -22,7 +22,6 @@ all: $(NAME)
 
 $(NAME): $(C_OBJ)
 	@make -C libft
-	@echo Libft OK
 	@$(CC) $(CFLAGS) $(LIB) $(C_OBJ) -o $@
 	@echo checker OK
 
@@ -33,12 +32,11 @@ $(C_OBJ_DIR)/%.o: $(C_SRC_DIR)/%.c
 clean:
 	@make -C libft clean
 	@rm -rf $(C_OBJ_DIR)
-	@echo clean OK
 
 fclean: clean
-	@rm -rf $(LIB)
+	@make -C libft fclean
 	@rm -rf $(NAME)
-	@echo fclean OK
+	@echo Push_swap fclean OK
 
 re: fclean all
 

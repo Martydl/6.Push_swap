@@ -6,14 +6,14 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:27:23 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/02/28 14:27:14 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/02/28 15:29:06 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "../libft/include/libft.h"
 # include <stdlib.h>
 
 typedef struct	s_nbr
