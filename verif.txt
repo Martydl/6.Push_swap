@@ -1,0 +1,5 @@
+verif a faire
+
+OK - doublons
+OK - nombre invalide (caractere, long)
+- instruction invalide

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjfree.c                                      :+:      :+:    :+:   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lramard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:38:18 by lramard           #+#    #+#             */
-/*   Updated: 2019/02/09 16:18:16 by mde-laga         ###   ########.fr       */
+/*   Created: 2018/11/20 14:34:39 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 14:34:56 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjfree(char *s1, char *s2)
+int		ft_str_is_lowercase(char *str)
 {
-	char	*str;
+	int i;
 
-	if (s1 == NULL)
-	{
-		if ((str = ft_strdup(s2)) == 0)
+	i = -1;
+	while (str[++i])
+		if (ft_islower(str[i]) == 0)
 			return (0);
-		return (str);
-	}
-	else
-	{
-		if ((str = ft_strjoin(s1, s2)) == 0)
-			return (0);
-		ft_free(s1, s2);
-		return (str);
-	}
+	return (1);
 }

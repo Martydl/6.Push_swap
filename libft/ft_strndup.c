@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/07 20:30:48 by lramard           #+#    #+#             */
-/*   Updated: 2019/02/12 19:00:48 by mde-laga         ###   ########.fr       */
+/*   Created: 2018/11/20 15:06:34 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/12/03 14:36:59 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strndup(const char *s1, size_t n)
 	char	*s2;
 	size_t	i;
 
-	if (n >= ft_strlen(s1))
-		return (ft_strdup(s1));
 	if (!(s2 = (char*)malloc(sizeof(char) * (n + 1))))
 		return (NULL);
 	i = -1;

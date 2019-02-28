@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lramard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 17:50:16 by lramard           #+#    #+#             */
-/*   Updated: 2018/11/20 16:08:18 by lramard          ###   ########.fr       */
+/*   Created: 2018/11/19 19:08:12 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 10:54:06 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*n_e;
+	t_list	*ln;
+	void	*ln_cont;
 
-	if (!(n_e = (t_list *)malloc(sizeof(t_list))))
+	if (!(ln = (t_list*)malloc(sizeof(t_list))))
 		return (NULL);
-	if (content == NULL || content_size == 0)
+	if (content != NULL)
 	{
-		n_e->next = NULL;
-		n_e->content = NULL;
-		n_e->content_size = 0;
-		return (n_e);
+		ln_cont = ft_memalloc(content_size);
+		ft_memcpy(ln_cont, content, content_size);
+		ln->content = ln_cont;
+		ln->content_size = content_size;
 	}
-	if ((n_e->content = (char *)malloc(content_size)) == 0)
+	else
 	{
-		free(n_e);
-		return (NULL);
+		ln->content = NULL;
+		ln->content_size = 0;
 	}
-	n_e->next = NULL;
-	ft_memcpy(n_e->content, content, content_size);
-	n_e->content_size = content_size;
-	return (n_e);
+	ln->next = NULL;
+	return (ln);
 }

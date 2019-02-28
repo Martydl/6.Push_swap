@@ -3,88 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 16:11:28 by lramard           #+#    #+#             */
-/*   Updated: 2019/02/18 14:03:16 by lramard          ###   ########.fr       */
+/*   Created: 2018/11/16 14:42:48 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 11:40:36 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_size_words(char const *s, char c)
+static int	ft_strings(char const *s, char c)
 {
-	int		words;
 	int		i;
-
-	words = 0;
-	i = 0;
-	if (s[i] == 0)
-		return (0);
-	if (s[i] != c)
-		words++;
-	i++;
-	while (s[i] != '\0')
-	{
-		if ((s[i] != c) && (s[i - 1] == c))
-			words++;
-		i++;
-	}
-	return (words);
-}
-
-static void		ft_size_letter(char **mem, char const *s, char c)
-{
-	uint32_t i;
-	uint32_t j;
-	uint32_t nb_letter;
+	int		count;
 
 	i = 0;
-	j = 0;
-	nb_letter = 0;
-	while (s[i] != '\0')
+	count = 0;
+	while (s[i])
 	{
-		if ((s[i] != c) && (s[i] != '\0'))
-		{
-			nb_letter++;
-			if (s[i + 1] == c || s[i + 1] == '\0')
-			{
-				i++;
-				mem[j] = (char*)malloc(sizeof(char) * (nb_letter + 1));
-				j++;
-				nb_letter = 0;
-			}
-		}
-		i++;
+		while (s[i] == c)
+			i++;
+		(s[i] != c) ? count++ : count;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	mem[j] = (char*)malloc(sizeof(char) * (1));
+	return (count);
 }
 
-char			**ft_strsplit(char const *s, char c)
+static int	ft_slen(char const *s, int beg, char c)
 {
-	uint32_t		i;
-	char			**mem;
-	int				j;
-	int				size;
+	int		n;
 
-	j = 0;
-	if ((s == NULL) ||
-		(!(mem = (char **)malloc(sizeof(char *) * (ft_size_words(s, c) + 1)))))
+	n = 0;
+	while (s[n + beg] && s[n + beg] != c)
+		n++;
+	return (n);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**split;
+	int		i;
+	int		j;
+	int		len;
+
+	if (!s)
 		return (NULL);
-	ft_size_letter(mem, s, c);
-	size = ft_size_words(s, c);
-	while (j < size)
+	if (!(split = (char**)malloc(sizeof(char*) * (ft_strings(s, c) + 1))))
+		return (NULL);
+	i = 0;
+	j = -1;
+	while (s[i])
 	{
-		i = 0;
-		while ((*s == c) && (*s != '\0'))
-			s++;
-		while ((*s != c) && (*s != '\0'))
-		{
-			mem[j][i++] = *s;
-			s++;
-		}
-		mem[j++][i] = '\0';
+		while (s[i] == c)
+			i++;
+		j++;
+		len = ft_slen(s, i, c);
+		split[j] = ft_strsub(s, i, len);
+		i = i + len;
 	}
-	mem[j] = 0;
-	return (mem);
+	if (s[i - 1] != c)
+		j++;
+	split[j] = 0;
+	return (split);
 }

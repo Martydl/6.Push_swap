@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lramard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 13:48:40 by lramard           #+#    #+#             */
-/*   Updated: 2018/11/29 17:04:26 by lramard          ###   ########.fr       */
+/*   Created: 2018/11/20 14:40:36 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 14:40:47 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_free(char *s1, char *s2)
+int		ft_str_is_uppercase(char *str)
 {
-	if (s1 != NULL)
-	{
-		free(s1);
-		s1 = NULL;
-	}
-	if (s2 != NULL)
-	{
-		free(s2);
-		s2 = NULL;
-	}
-	return (0);
+	int i;
+
+	i = -1;
+	while (str[++i])
+		if (ft_isupper(str[i]) == 0)
+			return (0);
+	return (1);
 }

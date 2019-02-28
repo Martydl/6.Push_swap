@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 19:02:22 by mde-laga          #+#    #+#             */
-/*   Updated: 2018/11/15 19:03:06 by mde-laga         ###   ########.fr       */
+/*   Created: 2018/11/20 14:38:28 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 14:38:39 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_str_is_printable(char *str)
 {
-	write(fd, &c, 1);
+	int i;
+
+	i = -1;
+	while (str[++i])
+		if (ft_isprint(str[i]) == 0)
+			return (0);
+	return (1);
 }

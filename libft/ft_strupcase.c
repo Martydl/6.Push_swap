@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_free.c                                   :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lramard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 08:08:37 by lramard           #+#    #+#             */
-/*   Updated: 2018/11/28 08:38:43 by lramard          ###   ########.fr       */
+/*   Created: 2018/11/20 15:03:12 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 15:03:28 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup_free(const char *s)
+char	*ft_strupcase(char *str)
 {
 	int		i;
-	char	*tab;
-	char	*str;
 
-	str = (char *)s;
-	i = 0;
-	tab = NULL;
-	if (!(tab = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1))))
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		tab[i] = s[i];
-		i++;
-	}
-	tab[i] = '\0';
-	free(tab);
-	return (tab);
+	i = -1;
+	while (str[++i])
+		str[i] = ft_toupper(str[i]);
+	return (str);
 }

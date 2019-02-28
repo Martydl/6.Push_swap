@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_isxdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lramard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 09:40:53 by lramard           #+#    #+#             */
-/*   Updated: 2018/11/22 09:47:07 by lramard          ###   ########.fr       */
+/*   Created: 2018/11/20 14:21:48 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 14:23:34 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_power(int nb, int power)
-{
-	int	res;
+#include "libft.h"
 
-	res = nb;
-	if ((nb > 0) && (power >= 0))
-	{
-		if (power == 0)
-			return (1);
-		while (power != 1)
-		{
-			res *= nb;
-			power--;
-		}
-		return (res);
-	}
-	return (0);
+int		ft_isxdigit(int c)
+{
+	return ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') ||
+			(c >= 'a' && c <= 'f') ? 1 : 0);
 }

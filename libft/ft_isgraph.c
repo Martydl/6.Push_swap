@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numbcounter.c                                   :+:      :+:    :+:   */
+/*   ft_isgraph.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lramard <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 14:20:17 by lramard           #+#    #+#             */
-/*   Updated: 2018/11/20 16:04:06 by lramard          ###   ########.fr       */
+/*   Created: 2018/11/20 14:09:21 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 14:11:04 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_numbcounter(int n)
+int		ft_isgraph(int c)
 {
-	int nb;
-	int count;
-
-	nb = n;
-	count = 0;
-	while (nb / 10)
-	{
-		nb = nb / 10;
-		count++;
-	}
-	count++;
-	return (count);
+	return (c >= '!' && c <= '~' ? 1 : 0);
 }

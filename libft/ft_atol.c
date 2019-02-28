@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev.c                                           :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 08:42:51 by lramard           #+#    #+#             */
-/*   Updated: 2019/02/18 13:59:44 by lramard          ###   ########.fr       */
+/*   Created: 2019/02/28 11:10:12 by mde-laga          #+#    #+#             */
+/*   Updated: 2019/02/28 11:10:18 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_rev(char *str)
+long	ft_atol(const char *str)
 {
-	uint32_t	i;
-	uint32_t	length;
-	char		*str_copy;
-	char		tmp;
+	int		i;
+	int		neg;
+	long	nb;
 
 	i = 0;
-	length = (ft_strlen(str) - 1);
-	str_copy = str;
-	if (str == NULL)
-		return (NULL);
-	while (i < length)
-	{
-		tmp = str[i];
-		str[i] = str_copy[length];
-		str_copy[length] = tmp;
+	neg = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
+			|| str[i] == '\r' || str[i] == ' ')
 		i++;
-		length--;
+	if (str[i] == '-')
+	{
+		neg = 1;
+		i++;
 	}
-	return (str);
+	if (str[i] == '+' && neg == 0)
+		i++;
+	nb = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+		nb = nb * 10 + str[i++] - '0';
+	return (neg == 0 ? nb : -nb);
 }

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/15 19:02:22 by mde-laga          #+#    #+#             */
-/*   Updated: 2018/11/15 19:03:06 by mde-laga         ###   ########.fr       */
+/*   Created: 2018/11/20 14:48:55 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 15:02:39 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strlowcase(char *str)
 {
-	write(fd, &c, 1);
+	int		i;
+
+	i = -1;
+	while (str[++i])
+		str[i] = ft_tolower(str[i]);
+	return (str);
 }

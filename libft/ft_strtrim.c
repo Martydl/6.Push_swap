@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mde-laga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 09:29:33 by lramard           #+#    #+#             */
-/*   Updated: 2019/02/18 14:02:51 by lramard          ###   ########.fr       */
+/*   Created: 2018/11/16 14:12:11 by mde-laga          #+#    #+#             */
+/*   Updated: 2018/11/20 12:52:03 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,23 @@
 
 char	*ft_strtrim(char const *s)
 {
-	uint32_t	i;
-	uint32_t	st;
-	uint32_t	l;
-	char		*mem;
+	int		i;
+	int		len;
+	char	*s2;
 
 	if (s == NULL)
 		return (NULL);
-	l = ft_strlen((char *)s);
-	st = 0;
-	while (s[st] == ' ' || s[st] == '\n' || s[st] == '\t')
-		st++;
+	len = ft_strlen(s);
 	i = 0;
-	while (l > st && (s[l - 1] == ' ' || s[l - 1] == '\n' || s[l - 1] == '\t'))
+	while (s[len - 1] == ' ' || s[len - 1] == '\n' || s[len - 1] == '\t')
+		len--;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 	{
 		i++;
-		l--;
+		len--;
 	}
-	l += i;
-	if (!(mem = (char *)malloc(sizeof(char) * ((l - (st + i)) + 1))))
-		return (NULL);
-	l = (l - (st + i));
-	i = 0;
-	ft_memcpy(mem, s + st, l);
-	mem[l] = '\0';
-	return (mem);
+	if (len < 0)
+		len = 0;
+	s2 = ft_strsub(s, i, len);
+	return (s2);
 }
