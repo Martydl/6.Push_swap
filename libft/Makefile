@@ -6,7 +6,7 @@
 #    By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 15:04:46 by mde-laga          #+#    #+#              #
-#    Updated: 2019/02/28 11:09:33 by mde-laga         ###   ########.fr        #
+#    Updated: 2019/02/28 15:09:00 by mde-laga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,14 +92,14 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@gcc -c -Wall -Wextra -Werror $(SRC)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
