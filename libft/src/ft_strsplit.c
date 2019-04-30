@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 14:42:48 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/02/28 15:28:12 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:18:45 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_strings(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		(s[i] != c) ? count++ : count;
+		(s[i] && s[i] != c) ? count++ : count;
 		while (s[i] && s[i] != c)
 			i++;
 	}
@@ -47,7 +47,7 @@ char		**ft_strsplit(char const *s, char c)
 	int		j;
 	int		len;
 
-	if (!s)
+	if (!s || !c)
 		return (NULL);
 	if (!(split = (char**)malloc(sizeof(char*) * (ft_strings(s, c) + 1))))
 		return (NULL);
@@ -58,12 +58,13 @@ char		**ft_strsplit(char const *s, char c)
 		while (s[i] == c)
 			i++;
 		j++;
+		if (!s[i])
+			break ;
 		len = ft_slen(s, i, c);
 		split[j] = ft_strsub(s, i, len);
 		i = i + len;
 	}
-	if (s[i - 1] != c)
-		j++;
+	s[i - 1] != c ? j++ : j;
 	split[j] = 0;
 	return (split);
 }

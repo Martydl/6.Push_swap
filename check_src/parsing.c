@@ -6,11 +6,21 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:35:54 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/03/01 11:34:41 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:31:33 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_error(t_nbr *lst, char **move)
+{
+	if (lst)
+		ft_free_list(lst);
+	if (move)
+		ft_free_move(move);
+	ft_putstr("Error\n");
+	exit(0);
+}
 
 void	ft_free_list(t_nbr *beg)
 {
@@ -22,11 +32,12 @@ void	ft_free_list(t_nbr *beg)
 	}
 }
 
-void	ft_error(t_nbr *lst)
+void	ft_free_move(char **move)
 {
-	ft_free_list(lst);
-	ft_putstr("Error\n");
-	exit(0);
+	int i = -1;
+	while (move[++i])
+		ft_strdel(&move[i]);
+	free(move);
 }
 
 t_nbr	*ft_create_list(char **av)
@@ -55,16 +66,23 @@ t_nbr	*ft_create_list(char **av)
 	return (beg);
 }
 
-void	ft_get_instruct(char **move)
+char	**ft_get_instruct(void)
 {
+	char	**move;
+	char	*str;
 	int		ret;
 	char	buf[BUFF_SIZE + 1];
 
-	while ((ret = read(1, buf, BUFF_SIZE)) > 0 && buf[0] != '\n')
+	move = NULL;
+	str = ft_strnew(0);
+	while ((ret = read(0, buf, BUFF_SIZE)) > 0)
 	{
 		if (ret == -1)
-			return ;
+			return (NULL);
 		buf[ret] = '\0';
-		*move = ft_strjfree(*move, ft_strdup(buf));
+		str = ft_strjfree(str, ft_strdup(buf));
 	}
+	move = ft_strsplit(str, '\n');
+	free(str);
+	return (move);
 }
