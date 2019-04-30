@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:27:23 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/02/28 15:29:06 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/03/01 10:24:36 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../libft/include/libft.h"
 # include <stdlib.h>
+
+# define BUFF_SIZE 1
 
 typedef struct	s_nbr
 {
@@ -38,5 +40,6 @@ void			ft_rrb(t_nbr **b);
 void			ft_rrr(t_nbr **a, t_nbr **b);
 void			ft_free_list(t_nbr *beg);
 void			ft_error(t_nbr *lst);
+void			ft_get_instruct(char **move);
 
 #endif

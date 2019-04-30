@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 11:29:12 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/02/28 13:58:13 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:36:04 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		main(int ac, char **av)
 {
 	t_nbr	*a;
 	t_nbr	*b;
+	//char	*move;
 
 	a = NULL;
 	b = NULL;
@@ -44,9 +45,13 @@ int		main(int ac, char **av)
 //	ft_rra(&a);
 //	ft_rrb(&b);
 //	ft_rrr(&a, &b);
+//	move = ft_strnew(0);
+//	ft_get_instruct(&move);
+//	ft_putendl(move);
 	ft_display_list(a);
-	ft_display_list(b);
+//	ft_display_list(b);
 	ft_free_list(a);
-	ft_free_list(b);
+//	ft_free_list(b);
+//	free(move);
 	return (0);
 }

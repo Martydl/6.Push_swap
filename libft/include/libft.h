@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 18:52:07 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/02/28 11:09:22 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/03/01 10:11:03 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ char			*ft_strlowcase(char *str);
 char			*ft_strndup(const char *s1, size_t n);
 char			*ft_strupcase(char *str);
 long			ft_atol(const char *str);
+char			*ft_strjfree(char *s1, char *s2);
 
 #endif

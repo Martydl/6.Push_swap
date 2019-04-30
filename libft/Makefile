@@ -80,14 +80,13 @@ SRC_NAME	=	ft_memset.c \
 				ft_strlowcase.c \
 				ft_strndup.c \
 				ft_strupcase.c \
-				ft_atol.c
+				ft_atol.c \
+				ft_strjfree.c
 
 OBJ_NAME	= $(SRC_NAME:.c=.o)
 
 SRC			= $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ			= $(addprefix $(OBJ_DIR), $(OBJ_NAME))
-
-verif = 0
 
 all: $(NAME)
 
@@ -96,12 +95,15 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 	@echo Libft OK
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o:  $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) -I $(INC_DIR) -o $@ -c $<
 
+status:
+
 clean:
 	@rm -rf $(OBJ_DIR)
+	@echo Libft clean OK
 
 fclean: clean
 	@rm -f $(NAME)

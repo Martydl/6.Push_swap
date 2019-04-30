@@ -30,11 +30,10 @@ LIB			= ./libft/libft.a
 all: $(NAME)
 
 $(NAME): $(C_OBJ) $(PS_OBJ)
-	@echo Libft in progress
 	@make -C libft
 	@$(CC) $(LIB) $(C_OBJ) -o $(C_NAME) 
 	@echo checker OK
-	@$(CC) $(lib) $(PS_OBJ) -o $@
+	@$(CC) $(LIB) $(PS_OBJ) -o $(NAME)
 	@echo push_swap OK
 
 $(C_OBJ_DIR)%.o: $(C_SRC_DIR)%.c
@@ -49,9 +48,11 @@ clean:
 	@make -C libft clean
 	@rm -rf $(C_OBJ_DIR)
 	@rm -rf $(PS_OBJ_DIR)
+	@echo Push_swap clean OK
 
 fclean: clean
-	@make -C libft fclean
+	@rm -rf $(LIB)
+	@echo libft fclean OK
 	@rm -rf $(C_NAME)
 	@rm -rf $(NAME)
 	@echo Push_swap fclean OK
