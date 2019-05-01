@@ -10,17 +10,22 @@ C_SRC_DIR	= ./check_src/
 C_OBJ_DIR	= ./check_obj/
 C_SRC_NAME	=	parsing.c \
 				check.c \
+				do_it.c \
 				move1.c \
 				move2.c \
 				move3.c \
-				solve.c \
 				main.c
 
 C_OBJ_NAME	= $(C_SRC_NAME:.c=.o)
 
 PS_SRC_DIR	= ./ps_src/
 PS_OBJ_DIR	= ./ps_obj/
-PS_SRC_NAME =	test.c
+PS_SRC_NAME =	list.c \
+				solve.c \
+				move1.c \
+				move2.c \
+				move3.c \
+				main.c
 
 PS_OBJ_NAME	= $(PS_SRC_NAME:.c=.o)
 
