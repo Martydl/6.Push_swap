@@ -6,11 +6,11 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 13:57:12 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/01 11:08:18 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/01 14:10:31 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	ft_check_duplicate(t_nbr *beg)
 {

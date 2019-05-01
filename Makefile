@@ -10,7 +10,9 @@ C_SRC_DIR	= ./check_src/
 C_OBJ_DIR	= ./check_obj/
 C_SRC_NAME	=	parsing.c \
 				check.c \
-				move.c \
+				move1.c \
+				move2.c \
+				move3.c \
 				solve.c \
 				main.c
 

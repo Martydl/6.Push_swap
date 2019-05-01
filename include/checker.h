@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 16:27:23 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/01 13:48:47 by mde-laga         ###   ########.fr       */
+/*   Created: 2019/05/01 14:10:54 by mde-laga          #+#    #+#             */
+/*   Updated: 2019/05/01 14:11:06 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include "../libft/include/libft.h"
 # include <stdlib.h>
