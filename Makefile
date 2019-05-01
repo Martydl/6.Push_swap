@@ -11,6 +11,7 @@ C_OBJ_DIR	= ./check_obj/
 C_SRC_NAME	=	parsing.c \
 				check.c \
 				move.c \
+				solve.c \
 				main.c
 
 C_OBJ_NAME	= $(C_SRC_NAME:.c=.o)
@@ -31,7 +32,7 @@ all: $(NAME)
 
 $(NAME): $(C_OBJ) $(PS_OBJ)
 	@make -C libft
-	@$(CC) $(LIB) $(C_OBJ) -o $(C_NAME) 
+	@$(CC) $(LIB) $(C_OBJ) -o $(C_NAME)
 	@echo checker OK
 	@$(CC) $(LIB) $(PS_OBJ) -o $(NAME)
 	@echo push_swap OK

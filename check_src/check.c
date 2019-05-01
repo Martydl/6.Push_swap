@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 13:57:12 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/04/30 18:41:39 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/01 11:08:18 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,31 @@ void	ft_check_nb(char *av, t_nbr *beg)
 
 int		ft_isinstruct(char *mv)
 {
-	char **list;
+	char	*list[11];
+	int		i;
 
-	if (!(list = (char**)malloc(sizeof(char*) * 12)))
-		return (0);
-	list[11] = NULL;
 	list[0] = "sa";
-	if (!ft_strcmp(mv, list[0]))
-		return (1);
+	list[1] = "sb";
+	list[2] = "ss";
+	list[3] = "pa";
+	list[4] = "pb";
+	list[5] = "ra";
+	list[6] = "rb";
+	list[7] = "rr";
+	list[8] = "rra";
+	list[9] = "rrb";
+	list[10] = "rrr";
+	i = 0;
+	while (i <= 10)
+		if (!ft_strcmp(mv, list[i++]))
+			return (1);
 	return (0);
 }
 
-int	ft_check_instruct(char **move)
+int		ft_check_instruct(char **move)
 {
-	ft_isinstruct(move[0]);
-	return (0);
+	while (*move)
+		if (ft_isinstruct(*move++) == 0)
+			return (0);
+	return (1);
 }

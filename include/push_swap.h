@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:27:23 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/04/30 18:40:22 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/01 13:48:47 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void			ft_free_move(char **move);
 void			ft_error(t_nbr *lst, char **move);
 char			**ft_get_instruct(void);
 int				ft_check_instruct(char **move);
+int				ft_resolve(t_nbr **a, char **move);
 
 #endif

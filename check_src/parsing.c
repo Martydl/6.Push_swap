@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:35:54 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/04/30 18:31:33 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/01 12:54:56 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	ft_free_list(t_nbr *beg)
 
 void	ft_free_move(char **move)
 {
-	int i = -1;
+	int i;
+
+	i = -1;
 	while (move[++i])
 		ft_strdel(&move[i]);
 	free(move);
