@@ -6,13 +6,13 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:43:37 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/02 16:31:46 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/02 17:56:35 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_small_sort(t_nbr **a, t_nbr **b)
+void	ft_five_sort(t_nbr **a, t_nbr **b)
 {
 	if ((*a)->nb > (*a)->next->nb)
 		ft_sa(a, 1);
@@ -135,19 +135,10 @@ void	ft_small_sort(t_nbr **a, t_nbr **b)
 	{
 		if ((*a)->next->next->next->next->nb < (*a)->nb)
 		{
-			ft_pb(a, b);
-			ft_pb(a, b);
-			ft_pb(a, b);
-			ft_pb(a, b);
 			ft_ra(a, 1);
-			if ((*b)->next->next->nb > (*b)->next->nb)
+			if ((*a)->nb > (*a)->next->nb)
 			{
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_pa(a, b);
 				ft_sa(a, 1);
-				ft_pa(a, b);
-				ft_ra(a, 1);
 				ft_ra(a, 1);
 				if ((*a)->nb > (*a)->next->nb)
 				{
@@ -165,11 +156,6 @@ void	ft_small_sort(t_nbr **a, t_nbr **b)
 			}
 			else
 			{
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_ra(a, 1);
 				ft_ra(a, 1);
 				ft_ra(a, 1);
 				ft_ra(a, 1);
@@ -236,6 +222,42 @@ void	ft_small_sort(t_nbr **a, t_nbr **b)
 	}
 }
 
+void	ft_three_sort(t_nbr **a, t_nbr **b)
+{
+	if ((*a)->nb < (*a)->next->nb && (*a)->next->nb < (*a)->next->next->nb)
+		return ;
+	else if ((*a)->nb < (*a)->next->next->nb && (*a)->next->next->nb < (*a)->next->nb)
+	{
+		ft_pb(a, b);
+		ft_sa(a, 1);
+		ft_pa(a, b);
+	}
+	else if ((*a)->next->nb < (*a)->nb && (*a)->nb < (*a)->next->next->nb)
+		ft_sa(a, 1);
+	else if ((*a)->next->next->nb < (*a)->nb && (*a)->nb < (*a)->next->nb)
+	{
+		ft_pb(a, b);
+		ft_sa(a, 1);
+		ft_pa(a, b);
+		ft_sa(a, 1);
+	}
+	else if ((*a)->next->nb < (*a)->next->next->nb && (*a)->next->next->nb < (*a)->nb)
+	{
+		ft_sa(a, 1);
+		ft_pb(a, b);
+		ft_sa(a, 1);
+		ft_pa(a, b);
+	}
+	else if ((*a)->next->next->nb < (*a)->next->nb && (*a)->next->nb < (*a)->nb)
+	{
+		ft_sa(a, 1);
+		ft_pb(a, b);
+		ft_sa(a, 1);
+		ft_pa(a, b);
+		ft_sa(a, 1);
+	}
+}
+
 void	ft_resolve(t_nbr *a)
 {
 	t_nbr	*b;
@@ -243,6 +265,6 @@ void	ft_resolve(t_nbr *a)
 	b = NULL;
 	//ft_putnbr(ft_getmed(a));
 	ft_display_list(a);
-	ft_small_sort(&a, &b);
+	ft_three_sort(&a, &b);
 	ft_display_list(a);
 }
