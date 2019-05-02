@@ -1,17 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   solve.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/01 14:43:37 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/02 16:31:46 by mde-laga         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "push_swap.h"
-
 void	ft_small_sort(t_nbr **a, t_nbr **b)
 {
 	if ((*a)->nb > (*a)->next->nb)
@@ -234,15 +220,4 @@ void	ft_small_sort(t_nbr **a, t_nbr **b)
 			}
 		}
 	}
-}
-
-void	ft_resolve(t_nbr *a)
-{
-	t_nbr	*b;
-
-	b = NULL;
-	//ft_putnbr(ft_getmed(a));
-	ft_display_list(a);
-	ft_small_sort(&a, &b);
-	ft_display_list(a);
 }

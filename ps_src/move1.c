@@ -6,11 +6,11 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 11:22:38 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/02 15:56:38 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/02 16:31:20 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void	ft_sa(t_nbr **a, int print)
 {
@@ -22,7 +22,7 @@ void	ft_sa(t_nbr **a, int print)
 	*a = (*a)->next;
 	tmp->next = (*a)->next;
 	(*a)->next = tmp;
-	if (print == 1)
+	/*(void)print;*/if (print == 1)
 		ft_putendl("sa");
 }
 
@@ -36,7 +36,7 @@ void	ft_sb(t_nbr **b, int print)
 	*b = (*b)->next;
 	tmp->next = (*b)->next;
 	(*b)->next = tmp;
-	if (print == 1)
+	/*(void)print;*/if (print == 1)
 		ft_putendl("sb");
 }
 
