@@ -6,74 +6,243 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:43:37 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/01 15:25:43 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:40:15 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_nbr	*ft_duplst(t_nbr *lst)
+void	ft_small_sort(t_nbr **a, t_nbr **b)
 {
-	t_nbr	*dup;
-
-	if (lst)
+	if ((*a)->nb > (*a)->next->nb)
+		ft_sa(a);
+	if ((*a)->next->next->nb > (*a)->next->next->next->nb)
 	{
-		if (!(dup = (t_nbr*)malloc(sizeof(t_nbr))))
-			return (NULL);
-		dup->nb = lst->nb;
-		dup->next = ft_duplst(lst->next);
-		return (dup);
+		ft_ra(a);
+		ft_ra(a);
+		ft_sa(a);
+		ft_rra(a);
+		ft_rra(a);
 	}
-	else
-		return (NULL);
-}
-
-t_nbr	*ft_sortlst(t_nbr *lst)
-{
-	t_nbr	*tmp;
-	int		swap;
-
-	tmp = lst;
-	while (lst->next)
+	if ((*a)->nb > (*a)->next->next->nb)
 	{
-		if (lst->nb > lst->next->nb)
+		ft_pb(a, b);
+		ft_sa(a);
+		ft_pb(a, b);
+		ft_ss(a, b);
+		ft_pa(a, b);
+		ft_sa(a);
+		ft_pa(a, b);
+	}
+	if ((*a)->next->next->next->next->nb > (*a)->next->next->nb)
+	{
+		ft_ra(a);
+		if ((*a)->next->next->next->nb > (*a)->next->next->nb)
 		{
-			swap = lst->nb;
-			lst->nb = lst->next->nb;
-			lst->next->nb = swap;
-			lst = tmp;
+			if ((*a)->nb > (*a)->next->next->nb)
+			{
+				ft_pb(a, b);
+				ft_ra(a);
+				ft_ra(a);
+				if ((*b)->nb > (*a)->nb)
+				{
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_putendl("1");
+				}
+				else
+				{
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("2");
+				}
+			}
+			else
+			{
+				if ((*a)->nb < (*a)->next->nb)
+				{
+					ft_ra(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("3");
+				}
+				else
+				{
+					ft_pb(a, b);
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("4");
+				}
+			}
 		}
 		else
-			lst = lst->next;
+		{
+			if ((*a)->nb > (*a)->next->next->next->nb)
+			{
+				ft_pb(a, b);
+				ft_ra(a);
+				ft_pb(a, b);
+				ft_ra(a);
+				if ((*b)->next->nb > (*b)->nb)
+				{
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_putendl("5");
+				}
+				else
+				{
+					ft_sb(b);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_putendl("6");
+				}
+			}
+			else
+			{
+				if ((*a)->nb < (*a)->next->nb)
+				{
+					ft_ra(a);
+					ft_ra(a);
+					ft_sa(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("7");
+				}
+				else
+				{
+					ft_sa(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_sa(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("8");
+				}
+			}
+		}
 	}
-	return (tmp);
-}
-
-int		ft_getmed(t_nbr *lst)
-{
-	int		med;
-	t_nbr	*dup;
-	t_nbr	*tmp;
-
-	dup = ft_duplst(lst);
-	dup = ft_sortlst(dup);
-	tmp = dup;
-	med = 0;
-	while (dup)
+	else
 	{
-		med++;
-		dup = dup->next;
+		if ((*a)->next->next->next->next->nb < (*a)->nb)
+		{
+			ft_pb(a, b);
+			ft_pb(a, b);
+			ft_pb(a, b);
+			ft_pb(a, b);
+			ft_ra(a);
+			if ((*b)->next->next->nb > (*b)->next->nb)
+			{
+				ft_pa(a, b);
+				ft_pa(a, b);
+				ft_pa(a, b);
+				ft_sa(a);
+				ft_pa(a, b);
+				ft_ra(a);
+				ft_ra(a);
+				if ((*a)->nb > (*a)->next->nb)
+				{
+					ft_sa(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("9");
+				}
+				else
+				{
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("10");
+				}
+			}
+			else
+			{
+				ft_pa(a, b);
+				ft_pa(a, b);
+				ft_pa(a, b);
+				ft_pa(a, b);
+				ft_ra(a);
+				ft_ra(a);
+				ft_ra(a);
+				ft_ra(a);
+				ft_putendl("11");
+			}
+		}
+		else
+		{
+			ft_ra(a);
+			if ((*a)->nb > (*a)->next->nb)
+			{
+				ft_pb(a, b);
+				ft_sa(a);
+				ft_pb(a, b);
+				ft_sa(a);
+				ft_ra(a);
+				ft_ra(a);
+				if ((*b)->next->nb > (*b)->nb)
+				{
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_putendl("12");
+				}
+				else
+				{
+					ft_sb(b);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_putendl("13");
+				}
+			}
+			else
+			{
+				if ((*a)->nb < (*a)->next->next->next->nb)
+				{
+					ft_ra(a);
+					ft_pb(a, b);
+					ft_sa(a);
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("14");
+				}
+				else
+				{
+					ft_pb(a, b);
+					ft_pb(a, b);
+					ft_sa(a);
+					ft_ra(a);
+					ft_pa(a, b);
+					ft_pa(a, b);
+					ft_ra(a);
+					ft_ra(a);
+					ft_ra(a);
+					ft_putendl("15");
+				}
+			}
+		}
 	}
-	med /= 2;
-	dup = tmp;
-	while (med-- > 0)
-		dup = dup->next;
-	med = dup->nb;
-	ft_free_list(tmp);
-	return (med);
 }
 
 void	ft_resolve(t_nbr *a)
 {
-	ft_putnbr(ft_getmed(a));
+	t_nbr	*b;
+
+	b = NULL;
+	//ft_putnbr(ft_getmed(a));
+	ft_display_list(a);
+	ft_small_sort(&a, &b);
+	ft_display_list(a);
 }
