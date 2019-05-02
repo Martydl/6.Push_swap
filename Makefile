@@ -21,6 +21,7 @@ C_OBJ_NAME	= $(C_SRC_NAME:.c=.o)
 PS_SRC_DIR	= ./ps_src/
 PS_OBJ_DIR	= ./ps_obj/
 PS_SRC_NAME =	list.c \
+				median.c \
 				solve.c \
 				move1.c \
 				move2.c \
