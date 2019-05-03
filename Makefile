@@ -23,6 +23,7 @@ PS_OBJ_DIR	= ./ps_obj/
 PS_SRC_NAME =	list.c \
 				median.c \
 				solve.c \
+				func.c \
 				move1.c \
 				move2.c \
 				move3.c \

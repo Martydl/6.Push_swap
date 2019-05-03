@@ -1,4 +1,4 @@
-void	ft_small_sort(t_nbr **a, t_nbr **b)
+void	ft_five_sort(t_nbr **a, t_nbr **b)
 {
 	if ((*a)->nb > (*a)->next->nb)
 		ft_sa(a, 1);
@@ -121,19 +121,10 @@ void	ft_small_sort(t_nbr **a, t_nbr **b)
 	{
 		if ((*a)->next->next->next->next->nb < (*a)->nb)
 		{
-			ft_pb(a, b);
-			ft_pb(a, b);
-			ft_pb(a, b);
-			ft_pb(a, b);
 			ft_ra(a, 1);
-			if ((*b)->next->next->nb > (*b)->next->nb)
+			if ((*a)->nb > (*a)->next->nb)
 			{
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_pa(a, b);
 				ft_sa(a, 1);
-				ft_pa(a, b);
-				ft_ra(a, 1);
 				ft_ra(a, 1);
 				if ((*a)->nb > (*a)->next->nb)
 				{
@@ -151,11 +142,6 @@ void	ft_small_sort(t_nbr **a, t_nbr **b)
 			}
 			else
 			{
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_pa(a, b);
-				ft_ra(a, 1);
 				ft_ra(a, 1);
 				ft_ra(a, 1);
 				ft_ra(a, 1);
