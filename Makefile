@@ -24,6 +24,8 @@ PS_SRC_NAME =	list.c \
 				median.c \
 				solve.c \
 				func.c \
+				algo1.c \
+				sort.c \
 				move1.c \
 				move2.c \
 				move3.c \

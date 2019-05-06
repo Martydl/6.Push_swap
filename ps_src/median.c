@@ -6,22 +6,23 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 15:32:35 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/01 16:13:22 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/06 15:56:25 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_nbr	*ft_duplst(t_nbr *lst)
+t_nbr	*ft_duplst(t_nbr *lst, int size)
 {
 	t_nbr	*dup;
 
-	if (lst)
+	if (lst && size > 0)
 	{
+		size--;
 		if (!(dup = (t_nbr*)malloc(sizeof(t_nbr))))
 			return (NULL);
 		dup->nb = lst->nb;
-		dup->next = ft_duplst(lst->next);
+		dup->next = ft_duplst(lst->next, size);
 		return (dup);
 	}
 	else
@@ -49,13 +50,13 @@ t_nbr	*ft_sortlst(t_nbr *lst)
 	return (tmp);
 }
 
-int		ft_getmed(t_nbr *lst)
+int		ft_getmed(t_nbr *lst, int size)
 {
 	int		med;
 	t_nbr	*dup;
 	t_nbr	*tmp;
 
-	dup = ft_duplst(lst);
+	dup = ft_duplst(lst, size);
 	dup = ft_sortlst(dup);
 	tmp = dup;
 	med = 0;
