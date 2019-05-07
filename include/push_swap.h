@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:15:14 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 16:18:00 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/07 17:25:04 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,13 @@ void			ft_quicksort_a(t_nbr **a, t_nbr **b, int size);
 void			ft_quicksort_b(t_nbr **a, t_nbr **b, int size);
 int				ft_push_a(t_nbr **a, t_nbr **b, int size, int med);
 int				ft_push_b(t_nbr **a, t_nbr **b, int size, int med);
-void			ft_bringback_a(t_nbr **a, t_nbr **b, int size);
-void			ft_bringback_a(t_nbr **a, t_nbr **b, int size);
+void			ft_bringback(t_nbr **a, t_nbr **b, int size);
 void			ft_sort_a(t_nbr **a, t_nbr **b, int size);
 void			ft_sort_b(t_nbr **a, t_nbr **b, int size);
+void			ft_mini_three_a(t_nbr **a);
+void			ft_mini_three_b(t_nbr **b);
+void			ft_short(t_nbr **a, t_nbr **b, int size);
+void			ft_short_a(t_nbr **a, int size);
 
 void			ft_display_list(t_nbr *lst);
 

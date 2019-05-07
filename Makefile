@@ -20,16 +20,17 @@ C_OBJ_NAME	= $(C_SRC_NAME:.c=.o)
 
 PS_SRC_DIR	= ./ps_src/
 PS_OBJ_DIR	= ./ps_obj/
-PS_SRC_NAME =	list.c \
-				median.c \
+PS_SRC_NAME =	main.c \
 				solve.c \
+				sort.c \
+				minisort.c \
+				list.c \
 				func.c \
 				algo1.c \
-				sort.c \
+				algo2.c \
 				move1.c \
 				move2.c \
-				move3.c \
-				main.c
+				move3.c
 
 PS_OBJ_NAME	= $(PS_SRC_NAME:.c=.o)
 

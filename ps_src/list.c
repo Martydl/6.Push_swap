@@ -6,19 +6,11 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:35:54 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/01 14:53:05 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:25:50 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_error(t_nbr *lst)
-{
-	if (lst)
-		ft_free_list(lst);
-	ft_putstr("Error\n");
-	exit(0);
-}
 
 void	ft_free_list(t_nbr *beg)
 {
