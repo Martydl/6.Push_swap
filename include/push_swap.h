@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:15:14 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/06 17:06:04 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/07 11:50:48 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void			ft_bringback_a(t_nbr **a, t_nbr **b, int size);
 void			ft_sort_a(t_nbr **a, t_nbr **b, int size);
 void			ft_sort_b(t_nbr **a, t_nbr **b, int size);
 
-void	ft_display_list(t_nbr *lst);
+void			ft_display_list(t_nbr *lst);
 
 #endif

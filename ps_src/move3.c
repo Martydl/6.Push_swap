@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 13:51:28 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/02 16:31:20 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/07 11:48:37 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	ft_rra(t_nbr **a, int print)
 	tmp = (*a)->next;
 	(*a)->next = NULL;
 	*a = tmp;
-	/*(void)print;*/if (print == 1)
+	if (print == 1)
 		ft_putendl("rra");
+	//ft_display_list(*a);
 }
 
 void	ft_rrb(t_nbr **b, int print)
@@ -42,8 +43,9 @@ void	ft_rrb(t_nbr **b, int print)
 	tmp = (*b)->next;
 	(*b)->next = NULL;
 	*b = tmp;
-	/*(void)print;*/if (print == 1)
+	if (print == 1)
 		ft_putendl("rrb");
+	//ft_display_list(*b);
 }
 
 void	ft_rrr(t_nbr **a, t_nbr **b)
