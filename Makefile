@@ -1,14 +1,8 @@
-NAME		= push_swap
-C_NAME		= checker
+PS = push_swap
+CH = checker
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
-
-INC_DIR		= ./include
-
-C_SRC_DIR	= ./check_src/
-C_OBJ_DIR	= ./check_obj/
-C_SRC_NAME	=	parsing.c \
+# Sources
+CH_SRC_NAME	=	parsing.c \
 				check.c \
 				do_it.c \
 				move1.c \
@@ -16,10 +10,6 @@ C_SRC_NAME	=	parsing.c \
 				move3.c \
 				main.c
 
-C_OBJ_NAME	= $(C_SRC_NAME:.c=.o)
-
-PS_SRC_DIR	= ./ps_src/
-PS_OBJ_DIR	= ./ps_obj/
 PS_SRC_NAME =	main.c \
 				solve.c \
 				sort.c \
@@ -32,44 +22,71 @@ PS_SRC_NAME =	main.c \
 				move2.c \
 				move3.c
 
-PS_OBJ_NAME	= $(PS_SRC_NAME:.c=.o)
+INCS_NAME	=	push_swap.h \
+				checker.h
 
-C_SRC		= $(addprefix $(C_SRC_DIR), $(C_SRC_NAME))
-C_OBJ		= $(addprefix $(C_OBJ_DIR), $(C_OBJ_NAME))
-PS_SRC		= $(addprefix $(PS_SRC_DIR), $(PS_SRC_NAME))
-PS_OBJ		= $(addprefix $(PS_OBJ_DIR), $(PS_OBJ_NAME))
-LIB			= ./libft/libft.a
+LDLIBS		=	libft.a
 
-all: $(NAME)
+# Directories
 
-$(NAME): $(C_OBJ) $(PS_OBJ)
-	@make -C libft
-	@$(CC) $(LIB) $(C_OBJ) -o $(C_NAME)
-	@echo checker OK
-	@$(CC) $(LIB) $(PS_OBJ) -o $(NAME)
-	@echo push_swap OK
+PS_SRC_DIR	=	./ps_src/
+PS_OBJ_DIR	=	./ps_obj/
+CH_SRC_DIR	=	./ch_src/
+CH_OBJ_DIR	=	./ch_obj/
+INCS_DIR	=	./includes/
+LDFLAGS		=	./libft/
 
-$(C_OBJ_DIR)%.o: $(C_SRC_DIR)%.c
-	@mkdir -p $(C_OBJ_DIR)
-	@$(CC) -I $(INC_DIR) $(CFLAGS)  -o $@ -c $<
+# Files
 
-$(PS_OBJ_DIR)%.o: $(PS_SRC_DIR)%.c
-	@mkdir -p $(PS_OBJ_DIR)
-	@$(CC) -I $(INC_DIR) $(CFLAGS)  -o $@ -c $<
+PS_SRC		=	$(addprefix $(PS_SRC_DIR), $(PS_SRC_NAME))
+PS_OBJ		=	$(patsubst $(PS_SRC_DIR)%.c, $(PS_OBJ_DIR)%.o, $(PS_SRC))
+CH_SRC		=	$(addprefix $(CH_SRC_DIR), $(CH_SRC_NAME))
+CH_OBJ		=	$(patsubst $(CH_SRC_DIR)%.c, $(CH_OBJ_DIR)%.o, $(CH_SRC))
+INC			=	$(addprefix $(INCS_DIR), $(INCS_NAME))
+
+# Compilation
+
+CC			=	gcc
+CPPFLAGS	=	-I $(INCS_DIR)
+LIBH		=	-I $(LDFLAGS)includes/
+CFLAGS		=	-Wall -Wextra -Werror -g $(CPPFLAGS) $(LIBH)
+
+all: lib ps ch
+
+lib:
+		make -C libft
+
+librm:
+		make -C libft fclean
+
+ps: lib $(PS_OBJ)
+	$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
+
+ch: lib $(CH_OBJ)
+		$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
+
+$(PS): lib $(PS_OBJ)
+		$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
+
+$(CH): lib $(CH_OBJ)
+		$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
+
+$(PS_OBJ_DIR)%.o: $(PS_SRC_DIR)%.c $(INC)
+		mkdir -p ps_obj
+		$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(CH_OBJ_DIR)%.o: $(CH_SRC_DIR)%.c $(INC)
+		mkdir -p ch_obj
+		$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	@make -C libft clean
-	@rm -rf $(C_OBJ_DIR)
-	@rm -rf $(PS_OBJ_DIR)
-	@echo Push_swap clean OK
+	rm -rf $(PS_OBJ_DIR)
+	rm -rf $(CH_OBJ_DIR)
 
-fclean: clean
-	@rm -rf $(LIB)
-	@echo libft fclean OK
-	@rm -rf $(C_NAME)
-	@rm -rf $(NAME)
-	@echo Push_swap fclean OK
+fclean: clean librm
+	rm -f $(PS)
+	rm -f $(CH)
 
 re: fclean all
 
-.PHONY: all re clean fclean
+.PHONY: all lib librm ps ch clean fclean re
