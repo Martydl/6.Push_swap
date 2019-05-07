@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:38:11 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 11:50:56 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/07 15:48:38 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	ft_three_a(t_nbr **a, t_nbr **b)
 	}
 	else if ((*a)->next->nb < (*a)->next->next->nb && (*a)->next->next->nb < (*a)->nb)
 	{
-//		ft_display_list(*a);
-//		ft_putendl("123");
 		ft_sa(a, 1);
 		ft_pb(a, b);
 		ft_sa(a, 1);

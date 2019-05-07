@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:15:14 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 11:50:48 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:18:00 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			ft_rrr(t_nbr **a, t_nbr **b);
 void			ft_free_list(t_nbr *beg);
 void			ft_error(t_nbr *lst);
 int				ft_getmed(t_nbr *lst, int size);
-void			ft_resolve(t_nbr *a);
+void			ft_resolve(t_nbr **a);
 int				ft_lstsize(t_nbr *lst);
 void			ft_two_a(t_nbr **a);
 void			ft_two_b(t_nbr **a);
