@@ -54,38 +54,38 @@ CFLAGS		=	-Wall -Wextra -Werror -g $(CPPFLAGS) $(LIBH)
 all: lib ps ch
 
 lib:
-		make -C libft
+		@make -sC libft -j 100
 
 librm:
-		make -C libft fclean
+		@make -sC libft fclean
 
 ps: lib $(PS_OBJ)
-	$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
+	@$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
 
 ch: lib $(CH_OBJ)
-		$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
+	@$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
 
 $(PS): lib $(PS_OBJ)
-		$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
+	@$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
 
 $(CH): lib $(CH_OBJ)
-		$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
+	@$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
 
 $(PS_OBJ_DIR)%.o: $(PS_SRC_DIR)%.c $(INC)
-		mkdir -p ps_obj
-		$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@mkdir -p ps_obj
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(CH_OBJ_DIR)%.o: $(CH_SRC_DIR)%.c $(INC)
-		mkdir -p ch_obj
-		$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@mkdir -p ch_obj
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	rm -rf $(PS_OBJ_DIR)
-	rm -rf $(CH_OBJ_DIR)
+	@rm -rf $(PS_OBJ_DIR)
+	@rm -rf $(CH_OBJ_DIR)
 
 fclean: clean librm
-	rm -f $(PS)
-	rm -f $(CH)
+	@rm -f $(PS)
+	@rm -f $(CH)
 
 re: fclean all
 
