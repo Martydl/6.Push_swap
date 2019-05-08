@@ -2,7 +2,8 @@ PS = push_swap
 CH = checker
 
 # Sources
-CH_SRC_NAME	=	parsing.c \
+
+CH_SRCS_NAME	=	parsing.c \
 				check.c \
 				do_it.c \
 				move1.c \
@@ -10,7 +11,7 @@ CH_SRC_NAME	=	parsing.c \
 				move3.c \
 				main.c
 
-PS_SRC_NAME =	main.c \
+PS_SRCS_NAME =	main.c \
 				solve.c \
 				sort.c \
 				minisort.c \
@@ -29,20 +30,20 @@ LDLIBS		=	libft.a
 
 # Directories
 
-PS_SRC_DIR	=	./ps_src/
-PS_OBJ_DIR	=	./ps_obj/
-CH_SRC_DIR	=	./ch_src/
-CH_OBJ_DIR	=	./ch_obj/
+PS_SRCS_DIR	=	./ps_srcs/
+PS_OBJS_DIR	=	./ps_objs/
+CH_SRCS_DIR	=	./ch_srcs/
+CH_OBJS_DIR	=	./ch_objs/
 INCS_DIR	=	./includes/
 LDFLAGS		=	./libft/
 
 # Files
 
-PS_SRC		=	$(addprefix $(PS_SRC_DIR), $(PS_SRC_NAME))
-PS_OBJ		=	$(patsubst $(PS_SRC_DIR)%.c, $(PS_OBJ_DIR)%.o, $(PS_SRC))
-CH_SRC		=	$(addprefix $(CH_SRC_DIR), $(CH_SRC_NAME))
-CH_OBJ		=	$(patsubst $(CH_SRC_DIR)%.c, $(CH_OBJ_DIR)%.o, $(CH_SRC))
-INC			=	$(addprefix $(INCS_DIR), $(INCS_NAME))
+PS_SRCS		=	$(addprefix $(PS_SRCS_DIR), $(PS_SRCS_NAME))
+PS_OBJS		=	$(patsubst $(PS_SRCS_DIR)%.c, $(PS_OBJS_DIR)%.o, $(PS_SRCS))
+CH_SRCS		=	$(addprefix $(CH_SRCS_DIR), $(CH_SRCS_NAME))
+CH_OBJS		=	$(patsubst $(CH_SRCS_DIR)%.c, $(CH_OBJS_DIR)%.o, $(CH_SRCS))
+INCS		=	$(addprefix $(INCS_DIR), $(INCS_NAME))
 
 # Compilation
 
@@ -51,7 +52,7 @@ CPPFLAGS	=	-I $(INCS_DIR)
 LIBH		=	-I $(LDFLAGS)includes/
 CFLAGS		=	-Wall -Wextra -Werror -g $(CPPFLAGS) $(LIBH)
 
-all: lib ps ch
+all: lib $(PS) $(CH)
 
 lib:
 		@make -sC libft -j 100
@@ -59,34 +60,40 @@ lib:
 librm:
 		@make -sC libft fclean
 
-ps: lib $(PS_OBJ)
-	@$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
+$(PS): lib $(PS_OBJS)
+	@$(CC) $(PS_OBJS) libft/libft.a -o $(PS)
+	@echo push_swap OK
 
-ch: lib $(CH_OBJ)
-	@$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
+$(CH): lib $(CH_OBJS)
+	@$(CC) $(CH_OBJS) libft/libft.a -o $(CH)
+	@echo checker OK
 
-$(PS): lib $(PS_OBJ)
-	@$(CC) $(PS_OBJ) libft/libft.a -o $(PS)
+$(PS_OBJS_DIR)%.o: $(PS_SRCS_DIR)%.c $(INCS)
+	@mkdir -p $(PS_OBJS_DIR)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
-$(CH): lib $(CH_OBJ)
-	@$(CC) $(CH_OBJ) libft/libft.a -o $(CH)
+$(CH_OBJS_DIR)%.o: $(CH_SRCS_DIR)%.c $(INCS)
+	@mkdir -p $(CH_OBJS_DIR)
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
-$(PS_OBJ_DIR)%.o: $(PS_SRC_DIR)%.c $(INC)
-	@mkdir -p ps_obj
-	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+cleanps:
+	@rm -rf $(PS_OBJS_DIR)
 
-$(CH_OBJ_DIR)%.o: $(CH_SRC_DIR)%.c $(INC)
-	@mkdir -p ch_obj
-	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+cleanch:
+	@rm -rf $(CH_OBJS_DIR)
 
-clean:
-	@rm -rf $(PS_OBJ_DIR)
-	@rm -rf $(CH_OBJ_DIR)
+clean: cleanps cleanch
 
-fclean: clean librm
+fcleanps: cleanps
 	@rm -f $(PS)
+	@echo push_swap fclean OK
+
+fcleanch: cleanch
 	@rm -f $(CH)
+	@echo checker fclean OK
+
+fclean: librm fcleanps fcleanch
 
 re: fclean all
 
-.PHONY: all lib librm ps ch clean fclean re
+.PHONY: all lib librm ps ch cleanps cleanch clean fcleanps fcleanch fclean re

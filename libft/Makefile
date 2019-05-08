@@ -1,13 +1,8 @@
 NAME		= libft.a
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+#Sources
 
-SRC_DIR		= ./src/
-OBJ_DIR		= ./obj/
-INC_DIR		= ./include
-
-SRC_NAME	=	ft_memset.c \
+SRCS_NAME	=	ft_memset.c \
 				ft_bzero.c \
 				ft_memcpy.c \
 				ft_memccpy.c \
@@ -83,27 +78,39 @@ SRC_NAME	=	ft_memset.c \
 				ft_atol.c \
 				ft_strjfree.c
 
-OBJ_NAME	= $(SRC_NAME:.c=.o)
+INCS_NAME	=	libft.h
 
-SRC			= $(addprefix $(SRC_DIR), $(SRC_NAME))
-OBJ			= $(addprefix $(OBJ_DIR), $(OBJ_NAME))
+# Directories
+
+SRCS_DIR	=	./srcs/
+OBJS_DIR	=	./objs/
+INCS_DIR	=	./includes/
+
+# Files
+
+SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_NAME))
+OBJS		=	$(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS))
+INCS		=	$(addprefix $(INCS_DIR), $(INCS_NAME))
+
+# Compilation
+
+CC			=	gcc
+CPPFLAGS	=	-I $(INCS_DIR)
+CFLAGS		=	-Wall -Wextra -Werror -g $(CPPFLAGS)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo Libft OK
 
-$(OBJ_DIR)%.o:  $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) -I $(INC_DIR) -o $@ -c $<
-
-status:
+$(OBJS_DIR)%.o:  $(SRCS_DIR)%.c $(INCS)
+	@mkdir -p $(OBJS_DIR)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
-	@rm -rf $(OBJ_DIR)
-	@echo Libft clean OK
+	@rm -rf $(OBJS_DIR)
 
 fclean: clean
 	@rm -f $(NAME)

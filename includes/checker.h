@@ -6,14 +6,14 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:10:54 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/01 14:50:31 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/08 11:34:53 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include "../libft/include/libft.h"
+# include "../libft/includes/libft.h"
 # include <stdlib.h>
 
 # define BUFF_SIZE 16
