@@ -52,19 +52,18 @@ CPPFLAGS	=	-I $(INCS_DIR)
 LIBH		=	-I $(LDFLAGS)includes/
 CFLAGS		=	-Wall -Wextra -Werror -g $(CPPFLAGS) $(LIBH)
 
-all: lib $(PS) $(CH)
-
-lib:
-		@make -sC libft -j 100
+all: $(PS) $(CH)
 
 librm:
 		@make -sC libft fclean
 
-$(PS): lib $(PS_OBJS)
+$(PS): $(PS_OBJS)
+	@make -sC libft -j 100
 	@$(CC) $(PS_OBJS) libft/libft.a -o $(PS)
 	@echo push_swap OK
 
-$(CH): lib $(CH_OBJS)
+$(CH): $(CH_OBJS)
+	@make -sC libft -j 100
 	@$(CC) $(CH_OBJS) libft/libft.a -o $(CH)
 	@echo checker OK
 

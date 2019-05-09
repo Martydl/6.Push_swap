@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:15:14 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/09 12:01:24 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:00:46 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_med
 }				t_med;
 
 t_nbr			*ft_create_list(char **av);
+int				ft_lst_is_sort(t_nbr *a);
 void			ft_free_list(t_nbr *beg);
 void			ft_error(t_nbr *lst);
 t_med			*ft_getmed(t_nbr *lst, int size);

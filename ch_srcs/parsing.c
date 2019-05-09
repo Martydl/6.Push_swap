@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:35:54 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/01 14:45:43 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 15:59:22 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(t_nbr *lst, char **move)
 		ft_free_list(lst);
 	if (move)
 		ft_free_move(move);
-	ft_putstr("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	exit(0);
 }
 

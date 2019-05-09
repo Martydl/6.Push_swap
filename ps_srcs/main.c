@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:34:33 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 18:18:51 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:01:33 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int		main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	a = ft_create_list(av);
-	ft_resolve(&a);
+	if (!ft_lst_is_sort(a))
+		ft_resolve(&a);
 	ft_free_list(a);
 	return (0);
 }

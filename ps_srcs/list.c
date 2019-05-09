@@ -6,11 +6,19 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:35:54 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 16:25:50 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:00:32 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		ft_lst_is_sort(t_nbr *a)
+{
+	if (a->next)
+		if (a->nb > a->next->nb || !ft_lst_is_sort(a->next))
+			return (0);
+	return (1);
+}
 
 void	ft_free_list(t_nbr *beg)
 {
