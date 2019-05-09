@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:43:37 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 17:18:02 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:01:15 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_quicksort_a(t_nbr **a, t_nbr **b, int size)
 {
-	int		med;
 	int		pushed;
 
-	med = ft_getmed(*a, size);
-	pushed = ft_push_b(a, b, size, med);
+	pushed = ft_push_b(a, b, size, ft_getmed(*a, size));
 	if (pushed < 3)
 	{
 		ft_sort_a(a, b, size - pushed);
@@ -34,11 +32,9 @@ void	ft_quicksort_a(t_nbr **a, t_nbr **b, int size)
 
 void	ft_quicksort_b(t_nbr **a, t_nbr **b, int size)
 {
-	int		med;
 	int		pushed;
 
-	med = ft_getmed(*b, size);
-	pushed = ft_push_a(a, b, size, med);
+	pushed = ft_push_a(a, b, size, ft_getmed(*b, size));
 	if (pushed < 3)
 	{
 		ft_sort_a(a, b, pushed);

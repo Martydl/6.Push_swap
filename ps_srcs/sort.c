@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 14:38:04 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 17:34:39 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 11:47:44 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,57 +14,60 @@
 
 #include <stdio.h>
 
-int		ft_push_a(t_nbr **a, t_nbr **b, int size, int med)
+int		ft_push_a(t_nbr **a, t_nbr **b, int size, t_med *med)
 {
 	int		pushed;
+	int		back;
 	int		i;
 
 	pushed = 0;
-	i = 0;
-	while (i < size)
+	back = 0;
+	i = -1;
+	while (++i < size)
 	{
-		if ((*b)->nb >= med)
-		{
+		if ((*b)->nb >= med->median && ++pushed)
 			ft_pa(a, b);
-			pushed++;
-		}
-		else
+		else if ((*b)->nb < med->median && ++back)
 			ft_rb(b, 1);
-		i++;
+		if (pushed == med->to_push)
+			break ;
 	}
-	if (ft_lstsize(*b) != size - pushed)
-		while (size - pushed > 0)
-		{
+	if (back < ft_lstsize(*b) - back)
+		while (back-- > 0)
 			ft_rrb(b, 1);
-			size--;
-		}
+	else if (back > ft_lstsize(*b) - back)
+		while (ft_lstsize(*b) - back++ > 0)
+			ft_rb(b, 1);
+	free(med);
 	return (pushed);
 }
 
-int		ft_push_b(t_nbr **a, t_nbr **b, int size, int med)
+int		ft_push_b(t_nbr **a, t_nbr **b, int size, t_med *med)
 {
 	int		pushed;
+	int		back;
 	int		i;
 
 	pushed = 0;
-	i = 0;
-	while (i < size)
+	back = 0;
+	i = -1;
+	while (++i < size)
 	{
-		if ((*a)->nb < med)
-		{
+		if ((*a)->nb < med->median && ++pushed)
 			ft_pb(a, b);
-			pushed++;
-		}
-		else
+		else if ((*a)->nb >= med->median && ++back)
 			ft_ra(a, 1);
-		i++;
+		if ((size % 2 == 0 && pushed == med->to_push) || (size % 2 != 0
+			&& pushed == med->to_push - 1))
+			break ;
 	}
-	if (ft_lstsize(*a) != size - pushed)
-		while (size - pushed > 0)
-		{
+	if (back < ft_lstsize(*a) - back)
+		while (back-- > 0)
 			ft_rra(a, 1);
-			size--;
-		}
+	else if (back > ft_lstsize(*a) - back)
+		while (ft_lstsize(*a) - back++ > 0)
+			ft_ra(a, 1);
+	free(med);
 	return (pushed);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 14:15:14 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/08 11:34:51 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:01:24 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,16 @@ typedef struct	s_nbr
 	struct s_nbr	*next;
 }				t_nbr;
 
+typedef struct	s_med
+{
+	int	median;
+	int	to_push;
+}				t_med;
+
 t_nbr			*ft_create_list(char **av);
 void			ft_free_list(t_nbr *beg);
 void			ft_error(t_nbr *lst);
-int				ft_getmed(t_nbr *lst, int size);
+t_med			*ft_getmed(t_nbr *lst, int size);
 int				ft_lstsize(t_nbr *lst);
 void			ft_resolve(t_nbr **a);
 void			ft_quicksort_a(t_nbr **a, t_nbr **b, int size);
@@ -34,8 +40,8 @@ void			ft_sort_a(t_nbr **a, t_nbr **b, int size);
 void			ft_sort_b(t_nbr **a, t_nbr **b, int size);
 void			ft_short(t_nbr **a, t_nbr **b, int size);
 void			ft_short_a(t_nbr **a, int size);
-int				ft_push_a(t_nbr **a, t_nbr **b, int size, int med);
-int				ft_push_b(t_nbr **a, t_nbr **b, int size, int med);
+int				ft_push_a(t_nbr **a, t_nbr **b, int size, t_med *med);
+int				ft_push_b(t_nbr **a, t_nbr **b, int size, t_med *med);
 void			ft_bringback(t_nbr **a, t_nbr **b, int size);
 void			ft_three_a(t_nbr **a, t_nbr **b);
 void			ft_three_b(t_nbr **a, t_nbr **b);

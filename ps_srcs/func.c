@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 11:47:52 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/07 16:25:44 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/09 12:00:40 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,23 @@ t_nbr	*ft_sortlst(t_nbr *lst)
 	return (tmp);
 }
 
-int		ft_getmed(t_nbr *lst, int size)
+t_med	*ft_getmed(t_nbr *lst, int size)
 {
-	int		med;
 	t_nbr	*dup;
 	t_nbr	*tmp;
+	t_med	*med;
 
+	if (!(med = (t_med*)malloc(sizeof(t_med))))
+		return (NULL);
 	dup = ft_duplst(lst, size);
 	dup = ft_sortlst(dup);
 	tmp = dup;
-	med = 0;
-	while (dup)
-	{
-		med++;
-		dup = dup->next;
-	}
-	med /= 2;
+	med->median = size / 2;
+	med->to_push = size - med->median;
 	dup = tmp;
-	while (med-- > 0)
+	while (med->median-- > 0)
 		dup = dup->next;
-	med = dup->nb;
+	med->median = dup->nb;
 	ft_free_list(tmp);
 	return (med);
 }
