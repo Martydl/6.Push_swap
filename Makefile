@@ -26,7 +26,7 @@ PS_SRCS_NAME =	main.c \
 INCS_NAME	=	push_swap.h \
 				checker.h
 
-LDLIBS		=	libft.a
+LIB_NAME		=	libft.a
 
 # Directories
 
@@ -35,7 +35,7 @@ PS_OBJS_DIR	=	./ps_objs/
 CH_SRCS_DIR	=	./ch_srcs/
 CH_OBJS_DIR	=	./ch_objs/
 INCS_DIR	=	./includes/
-LDFLAGS		=	./libft/
+LIB_DIR		=	./libft/
 
 # Files
 
@@ -44,26 +44,29 @@ PS_OBJS		=	$(patsubst $(PS_SRCS_DIR)%.c, $(PS_OBJS_DIR)%.o, $(PS_SRCS))
 CH_SRCS		=	$(addprefix $(CH_SRCS_DIR), $(CH_SRCS_NAME))
 CH_OBJS		=	$(patsubst $(CH_SRCS_DIR)%.c, $(CH_OBJS_DIR)%.o, $(CH_SRCS))
 INCS		=	$(addprefix $(INCS_DIR), $(INCS_NAME))
+LIB			=	$(addprefix $(LIB_DIR), $(LIB_NAME))
+
 
 # Compilation
 
 CC			=	gcc
 CPPFLAGS	=	-I $(INCS_DIR)
-LIBH		=	-I $(LDFLAGS)includes/
+LIBH		=	-I $(LIB_DIR)includes/
 CFLAGS		=	-Wall -Wextra -Werror -g $(CPPFLAGS) $(LIBH)
 
-all: $(PS) $(CH)
+all: $(LIB) $(PS) $(CH)
+
+$(LIB):
+	@make -sC libft -j 100
 
 librm:
-		@make -sC libft fclean
+	@make -sC libft fclean
 
-$(PS): $(PS_OBJS)
-	@make -sC libft -j 100
+$(PS): $(LIB) $(PS_OBJS)
 	@$(CC) $(PS_OBJS) libft/libft.a -o $(PS)
 	@echo push_swap OK
 
-$(CH): $(CH_OBJS)
-	@make -sC libft -j 100
+$(CH): $(LIB) $(CH_OBJS)
 	@$(CC) $(CH_OBJS) libft/libft.a -o $(CH)
 	@echo checker OK
 
@@ -81,8 +84,6 @@ cleanps:
 cleanch:
 	@rm -rf $(CH_OBJS_DIR)
 
-clean: cleanps cleanch
-
 fcleanps: cleanps
 	@rm -f $(PS)
 	@echo push_swap fclean OK
@@ -91,8 +92,10 @@ fcleanch: cleanch
 	@rm -f $(CH)
 	@echo checker fclean OK
 
+clean: cleanps cleanch
+
 fclean: librm fcleanps fcleanch
 
 re: fclean all
 
-.PHONY: all lib librm ps ch cleanps cleanch clean fcleanps fcleanch fclean re
+.PHONY: all librm cleanps cleanch clean fcleanps fcleanch fclean re
