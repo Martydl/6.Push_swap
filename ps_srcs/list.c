@@ -6,7 +6,7 @@
 /*   By: mde-laga <mde-laga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 16:35:54 by mde-laga          #+#    #+#             */
-/*   Updated: 2019/05/09 17:24:12 by mde-laga         ###   ########.fr       */
+/*   Updated: 2019/05/20 10:42:36 by mde-laga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,25 @@ int		ft_lst_is_sort(t_nbr *a)
 	return (1);
 }
 
-void	ft_free_list(t_nbr *beg)
+int		ft_check_len(char *str)
 {
-	if (beg)
-	{
-		if (beg->next)
-			ft_free_list(beg->next);
-		free(beg);
-	}
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] == '+' || str[i] == '-' || str[i] == '0')
+		i++;
+	while (str[i++])
+		count++;
+	return (count > 10 ? 0 : 1);
 }
 
 void	ft_check_nb(char *av, t_nbr *beg)
 {
 	if (!ft_str_is_numeric(av[0] == '-' || av[0] == '+' ? av + 1 : av))
+		ft_error(beg);
+	if (!ft_check_len(av))
 		ft_error(beg);
 	if (ft_atoi(av) != ft_atol(av))
 		ft_error(beg);
