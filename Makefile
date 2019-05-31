@@ -3,7 +3,7 @@ CH = checker
 
 # Sources
 
-CH_SRCS_NAME	=	parsing.c \
+CH_SRCS_NAME =	parsing.c \
 				check.c \
 				do_it.c \
 				move1.c \
@@ -26,7 +26,7 @@ PS_SRCS_NAME =	main.c \
 INCS_NAME	=	push_swap.h \
 				checker.h
 
-LIB_NAME		=	libft.a
+LIB_NAME	=	libft.a
 
 # Directories
 
@@ -46,7 +46,6 @@ CH_OBJS		=	$(patsubst $(CH_SRCS_DIR)%.c, $(CH_OBJS_DIR)%.o, $(CH_SRCS))
 INCS		=	$(addprefix $(INCS_DIR), $(INCS_NAME))
 LIB			=	$(addprefix $(LIB_DIR), $(LIB_NAME))
 
-
 # Compilation
 
 CC			=	gcc
@@ -54,13 +53,10 @@ CPPFLAGS	=	-I $(INCS_DIR)
 LIBH		=	-I $(LIB_DIR)includes/
 CFLAGS		=	-Wall -Wextra -Werror -g $(CPPFLAGS) $(LIBH)
 
-all: $(LIB) $(PS) $(CH)
+all: $(PS) $(CH)
 
 $(LIB):
-	@make -sC libft -j 100
-
-librm:
-	@make -sC libft fclean
+	@make -j -sC $(LIB_DIR)
 
 $(PS): $(LIB) $(PS_OBJS)
 	@$(CC) $(PS_OBJS) libft/libft.a -o $(PS)
@@ -91,6 +87,9 @@ fcleanps: cleanps
 fcleanch: cleanch
 	@rm -f $(CH)
 	@echo checker fclean OK
+
+librm:
+	@make -sC libft fclean
 
 clean: cleanps cleanch
 
